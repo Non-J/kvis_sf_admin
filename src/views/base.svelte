@@ -2,8 +2,6 @@
   import { link } from "svelte-spa-router";
 </script>
 
-<meta name="viewport" content="width=divice-width, initial-scale" />
-
 <!-- <header class="flex item-center px-3 py-3 justify-between bg-gray-900">
   <div>
     <a href="http://app.kvis.ac.th/issf2020">

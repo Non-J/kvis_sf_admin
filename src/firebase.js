@@ -62,11 +62,27 @@ const authUserObservable = authState(auth)
 
 const getEmailByUsername = functions.httpsCallable('getEmailByUsername');
 
+const Schedule = async () => {
+	var Events = []
+	var Days = []
+	let schedule_collections = ["UbFemGoQkFDQtQpDjl1E", "fMu0m6OrT55hOt8mKpFZ", "aOHyccK7yRvfMYWpCcCU", "E60HaUR41g4lWDvl8Ccu", "OytS1cVHVBiHDAs8Z0C9", "9AoQIm93JyR2QLJtF7LD", "JgBP96O3QzD6atggRpVh"]
+	for (let col in schedule_collections) {
+		await firestore.collection("schedules").doc(schedule_collections[col]).get().then((doc) => {
+			if (doc.exists) {
+				doc.data().content.forEach((obj) => { Events.push(obj); })
+				Days.push(doc.data())
+			}
+		})
+	}
+	return [Events, Days];
+}
+
 export {
 	app,
 	auth,
 	firestore,
 	authUserObservable,
 	getEmailByUsername,
+	Schedule,
 };
 export default firebase;

@@ -1,6 +1,7 @@
 <script>
   import Base from "./base.svelte";
 
+  import { link } from "svelte-spa-router";
   import { onMount, onDestroy } from "svelte";
   import { auth, authUserObservable, getEmailByUsername } from "../firebase.js";
 
@@ -181,6 +182,14 @@
         style="border-radius: 17px;">
         Logout
       </button>
+
+      <a href='/schedule' use:link ><button
+        class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 mt-2
+        md:mt-4 focus:outline-none focus:shadow-outline"
+        style="border-radius: 17px;">
+        Go to Schedule
+      </button></a>
+
     </div>
   {:else}
     <div class="w-full h-full min-h-screen bg-center bg-cover bg-loginbgimage">
