@@ -4,12 +4,14 @@ import 'firebase/firestore';
 import 'firebase/functions';
 
 import {
-	of
+	of ,
+	BehaviorSubject
 } from 'rxjs';
 import {
 	switchMap,
 	startWith,
-	map
+	map,
+	scan
 } from 'rxjs/operators';
 
 import {
@@ -69,22 +71,17 @@ const scheduleRef = firestore.collection("schedules")
 
 const scheduleObservable = collectionData(scheduleRef);
 
-const Schedule = async () => {
-	var Events = []
-	var Days = []
-	let schedule_collections = ["UbFemGoQkFDQtQpDjl1E", "fMu0m6OrT55hOt8mKpFZ", "aOHyccK7yRvfMYWpCcCU", "E60HaUR41g4lWDvl8Ccu", "OytS1cVHVBiHDAs8Z0C9", "9AoQIm93JyR2QLJtF7LD", "JgBP96O3QzD6atggRpVh"]
-	for (let col in schedule_collections) {
-		await firestore.collection("schedules").doc(schedule_collections[col]).get().then((doc) => {
-			if (doc.exists) {
-				doc.data().content.forEach((obj) => {
-					Events.push(obj);
-				})
-				Days.push(doc.data())
+const fullScheduleObservable = scheduleObservable.pipe(
+	map((documents, idx) => {
+		let result = [];
+		for (let document of documents) {
+			if (document["content_type"] === "list_content") {
+				result = [...result, ...(document["content"] || [])];
 			}
-		})
-	}
-	return [Events, Days];
-}
+		}
+		return result;
+	})
+);
 
 export {
 	app,
@@ -92,6 +89,7 @@ export {
 	firestore,
 	authUserObservable,
 	getEmailByUsername,
-	Schedule,
+	scheduleObservable,
+	fullScheduleObservable,
 };
 export default firebase;

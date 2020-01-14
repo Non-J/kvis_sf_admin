@@ -72,23 +72,6 @@
   .bg-profilebgimage {
     background-image: url("images/profilebg.jpg");
   }
-
-  .bg-loginbgimage {
-    background-image: url("images/loginbg.jpg");
-  }
-  .container-smth {
-    max-width: 45%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  @media (min-height: 768px) {
-    .container-smth {
-      max-width: 100%;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
 </style>
 
 <Base>
