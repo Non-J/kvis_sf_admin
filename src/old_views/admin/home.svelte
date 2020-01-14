@@ -6,6 +6,4 @@
 
 </style>
 
-<Base>
-  <SignInWidget />
-</Base>
+<Base />

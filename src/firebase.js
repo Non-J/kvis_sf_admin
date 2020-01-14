@@ -16,7 +16,8 @@ import {
 	authState
 } from 'rxfire/auth';
 import {
-	docData
+	docData,
+	collectionData
 } from 'rxfire/firestore';
 
 const firebaseConfig = {
@@ -61,6 +62,12 @@ const authUserObservable = authState(auth)
 		}));
 
 const getEmailByUsername = functions.httpsCallable('getEmailByUsername');
+
+const scheduleRef = firestore.collection("schedules")
+	.where("is_featured", "==", true)
+	.orderBy("priority", "desc");
+
+const scheduleObservable = collectionData(scheduleRef);
 
 const Schedule = async () => {
 	var Events = []
