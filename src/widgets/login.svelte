@@ -12,6 +12,8 @@
     loggingInFlag = true;
     loginInputErrorMsg = null;
 
+    loginInputUsername = loginInputUsername.trim();
+
     if (emailRegex.test(loginInputUsername)) {
       auth
         .signInWithEmailAndPassword(loginInputUsername, loginInputPassword)
@@ -49,19 +51,6 @@
     background-image: url("images/loginbg.jpg");
     background-position: center;
     background-size: cover;
-  }
-  .container-smth {
-    max-width: 45%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  @media (min-height: 768px) {
-    .container-smth {
-      max-width: 100%;
-      margin-left: auto;
-      margin-right: auto;
-    }
   }
 
   .box-container {

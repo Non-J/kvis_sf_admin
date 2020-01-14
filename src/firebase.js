@@ -76,7 +76,9 @@ const Schedule = async () => {
 	for (let col in schedule_collections) {
 		await firestore.collection("schedules").doc(schedule_collections[col]).get().then((doc) => {
 			if (doc.exists) {
-				doc.data().content.forEach((obj) => { Events.push(obj); })
+				doc.data().content.forEach((obj) => {
+					Events.push(obj);
+				})
 				Days.push(doc.data())
 			}
 		})
