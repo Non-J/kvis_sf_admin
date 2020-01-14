@@ -100,7 +100,7 @@
       {#if firebaseUser['data']['name']}
         <ProfileContent profile={firebaseUser['data']} />
       {:else}
-        <div class="flex h-screen justify-center content-center">
+        <div class="flex py-12 justify-center content-center">
           <h1
             class="mt-1 md:mt-2 text-xl sm:text-2xl md:text-5xl font-hairline
             text-gray-100">
@@ -122,7 +122,7 @@
           class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4
           mt-2 md:mt-4 focus:outline-none focus:shadow-outline"
           style="border-radius: 17px;">
-          Go to Schedule
+          Schedule
         </button>
       </a>
 
