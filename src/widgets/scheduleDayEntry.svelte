@@ -5,7 +5,7 @@
 
   $: {
     if (!content["background"]) {
-      content["background"] = "#ffffff77";
+      content["background"] = "#8897ab";
     }
   }
 
@@ -32,7 +32,12 @@
 </script>
 
 <style>
-
+  .rounded {
+    border-radius: 25px;
+  }
+  .bg-gray-550 {
+    background: #8897ab;
+  }
 </style>
 
 <div

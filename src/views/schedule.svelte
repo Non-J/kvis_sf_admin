@@ -16,23 +16,30 @@
     return time.toLocaleDateString("en-US", options);
   };
 
+  function filterCurrentEvents(fullSchedule) {
+    let result = [];
+    let now = new Date().getTime();
+    if (Array.isArray(fullSchedule)) {
+      for (let event of $fullScheduleObservable) {
+        if (event.begin.toMillis() <= now && now <= event.end.toMillis()) {
+          result.push(event);
+        }
+      }
+    }
+    return result;
+  }
+
   let currentEventEntries = [];
   let currentEventEntriesUpdaterInterval;
+
+  $: currentEventEntries = filterCurrentEvents($fullScheduleObservable);
 
   onMount(() => {
     // TODO: Use update solution that are more lightweight
     // Such as use timeout instead of interval
     currentEventEntriesUpdaterInterval = setInterval(() => {
-      currentEventEntries = [];
-      let now = new Date().getTime();
-      if ($fullScheduleObservable && $fullScheduleObservable.length !== 0) {
-        for (let event of $fullScheduleObservable) {
-          if (event.begin.toMillis() <= now && now <= event.end.toMillis()) {
-            currentEventEntries.push(event);
-          }
-        }
-      }
-    }, 1000);
+      currentEventEntries = filterCurrentEvents($fullScheduleObservable);
+    }, 30000);
   });
 
   onDestroy(() => {
@@ -43,9 +50,6 @@
 <style>
   .rounded {
     border-radius: 25px;
-  }
-  .bg-gray-550 {
-    background: #8897ab;
   }
 </style>
 
