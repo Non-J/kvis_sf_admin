@@ -100,7 +100,7 @@
       {#if firebaseUser['data']['name']}
         <ProfileContent profile={firebaseUser['data']} />
       {:else}
-        <div class="flex py-12 justify-center content-center">
+        <div class="flex py-12 justify-center">
           <h1
             class="mt-1 md:mt-2 text-xl sm:text-2xl md:text-5xl font-hairline
             text-gray-100">
