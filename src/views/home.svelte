@@ -103,7 +103,7 @@
         </button>
 
         <a
-          href="https://kvis-my.sharepoint.com/:b:/g/personal/581033_kvis_ac_th/EdyrhXjvg0FFgavqtaOfUwYBvf0SeYeVWWQ07vwM1EzBIA">
+          href="https://drive.google.com/file/d/1u6cKZOg8ZqGSjAA0MVrOBSZMZ8pmavJo/view?usp=sharing">
           <button
             class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4
             mt-2 md:mt-4 mx-2 focus:outline-none focus:shadow-outline"
