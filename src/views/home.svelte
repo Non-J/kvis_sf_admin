@@ -111,7 +111,7 @@
             Abstract Book
           </button>
         </a>
-
+        <!--
         <a href="/schedule" use:link>
           <button
             class="bg-green-600 hover:bg-green-700 text-white font-bold py-2
@@ -120,7 +120,7 @@
             Schedule
           </button>
         </a>
-
+-->
       </div>
 
     </div>
