@@ -92,22 +92,36 @@
         </div>
       {/if}
 
-      <button
-        on:click={logoutAction}
-        class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 mt-2
-        md:mt-4 focus:outline-none focus:shadow-outline"
-        style="border-radius: 17px;">
-        Logout
-      </button>
+      <div class="flex flex-row flex-wrap w-full justify-center">
 
-      <a href="/schedule" use:link>
         <button
-          class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4
-          mt-2 md:mt-4 focus:outline-none focus:shadow-outline"
+          on:click={logoutAction}
+          class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 mt-2
+          md:mt-4 mx-2 focus:outline-none focus:shadow-outline"
           style="border-radius: 17px;">
-          Schedule
+          Logout
         </button>
-      </a>
+
+        <a
+          href="https://kvis-my.sharepoint.com/:b:/g/personal/581033_kvis_ac_th/EdyrhXjvg0FFgavqtaOfUwYBvf0SeYeVWWQ07vwM1EzBIA">
+          <button
+            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4
+            mt-2 md:mt-4 mx-2 focus:outline-none focus:shadow-outline"
+            style="border-radius: 17px;">
+            Abstract Book
+          </button>
+        </a>
+
+        <a href="/schedule" use:link>
+          <button
+            class="bg-green-600 hover:bg-green-700 text-white font-bold py-2
+            px-4 mt-2 md:mt-4 mx-2 focus:outline-none focus:shadow-outline"
+            style="border-radius: 17px;">
+            Schedule
+          </button>
+        </a>
+
+      </div>
 
     </div>
   {:else}
