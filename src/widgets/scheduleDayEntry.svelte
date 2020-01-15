@@ -9,7 +9,7 @@
     }
   }
 
-  function parseColor(color, alpha) {
+  function parseBackgroundColor(color, alpha) {
     if (!color) {
       throw "Invalid Color";
     }
@@ -17,11 +17,25 @@
       return 'background-image: url("' + color + '")';
     } else {
       if (alpha) {
-        return "background: " + color.substring(0, 7) + alpha;
+        return "background-color: " + color.substring(0, 7) + alpha;
       } else {
-        return "background: " + color;
+        return "background-color: " + color;
       }
     }
+  }
+
+  function parseTextStyle(text_color, text_weight, text_scale) {
+    let result = "";
+    if (text_color) {
+      result += "color: " + text_color + ";";
+    }
+    if (text_weight) {
+      result += "font-weight: " + (400 + text_weight * 100) + ";";
+    }
+    if (text_scale) {
+      result += "font-size: " + text_scale + "em;";
+    }
+    return result;
   }
 
   function toTime(timestamp) {
@@ -41,9 +55,8 @@
 </style>
 
 <div
-  class="m-2 rounded bg-gray-600 pt-5 pb-5 hover:text-gray-300 bg-center
-  bg-cover"
-  style="{parseColor(content['background'])}; cursor:pointer;"
+  class="m-2 rounded pt-5 pb-5 hover:text-gray-300 bg-center bg-cover"
+  style="{parseBackgroundColor(content['background'])}; cursor:pointer;"
   on:click|preventDefault={() => {
     showContent = !showContent;
   }}>
@@ -60,8 +73,8 @@
   <div>
     {#each content['content'] as event}
       <div
-        class="m-2 rounded bg-gray-550 bg-center bg-cover"
-        style="{parseColor(content['background'], 'A0')};">
+        class="m-2 rounded bg-center bg-cover"
+        style="{parseBackgroundColor(content['background'], 'A0')};">
         {#if content['title']}
           <h1 class="text-xl text-gray-900 font-bold">{event['title']}</h1>
         {/if}
